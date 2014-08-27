@@ -15,21 +15,15 @@
   		<button type="button" class="btn btn-default" data-toggle="dropdown">
     CATEGORIES <span class="caret"></span></button>
   		<ul class="dropdown-menu" role="menu">
-
-    		<li><a href="#">MAN</a></li>
-    		<li><a href="#">WOMAN</a></li>
-    		<li><a href="#">KIDS</a></li>
-
-    		<li class="divider"></li>
-
-    		<li><a href="#">ELECTRONICS</a></li>
-    		<li><a href="#">HOME & KITCHEN</a></li>
-    		<li><a href="#">FOOTWEAR</a></li>
-    		<li><a href="#">BOOKS</a></li>
-    
-    		<li class="divider"></li>
-    
-    		<li><a href="#">WHAT'S NEW</a></li>
+        {{#each catg in controller.lastObject}}
+          <li><a href="#">{{catg.root.name}}</a>
+                <ul>
+                {{#each d in catg.root.taxons}}
+                    <li><a href="#">{{d.name}}</a></li>
+                {{/each}}
+                </ul>
+          </li>
+        {{/each}}
    		</ul>
 	</div>
 
@@ -162,83 +156,21 @@
 <div>
 <h1> Top selling Items:</h1>
 	<div class="row">
-  		<div class="col-sm-4 col-md-3">
-    		<div class="thumbnail" >
-      			<img data-src="holder.js/300x300" src="image/img_5.jpg" alt="Not available">
-      			<div class="caption">
-        			<h3>Price: $$$</h3>
-        			<p><a href="#" class="btn btn-primary" role="button">Buy Now</a> <a href="#" class="btn btn-default" role="button">Add to wishlist</a></p>
-      			</div>
-    		</div>
-  		</div>	
-  		<div class="col-sm-4 col-md-3">
-    		<div class="thumbnail" >
-      			<img data-src="holder.js/300x300" src="image/img_1.jpg" alt="Not available">
-      			<div class="caption">
-        			<h3>Price: $$$</h3>
-        			<p><a href="#" class="btn btn-primary" role="button">Buy Now</a> <a href="#" class="btn btn-default" role="button">Add to wishlist</a></p>
-      			</div>
-    		</div>
-  		</div>
-  		<div class="col-sm-4 col-md-3">
-    		<div class="thumbnail" >
-      			<img data-src="holder.js/300x300" src="image/img_2.jpg" alt="Not available">
-      			<div class="caption">
-        			<h3>Price: $$$</h3>
-        			<p><a href="#" class="btn btn-primary" role="button">Buy Now</a> <a href="#" class="btn btn-default" role="button">Add to wishlist</a></p>
-      			</div>
-    		</div>
-  		</div>
-  		<div class="col-sm-4 col-md-3">
-    		<div class="thumbnail" >
-      			<img data-src="holder.js/300x300" src="image/img_3.jpg" alt="Not available">
-      			<div class="caption">
-        			<h3>Price: $$$</h3>
-        			<p><a href="#" class="btn btn-primary" role="button">Buy Now</a> <a href="#" class="btn btn-default" role="button">Add to wishlist</a></p>
-      			</div>
-    		</div>
-  		</div>
-
+      {{#each product in controller.firstObject}}
+            <div class="col-sm-4 col-md-3">
+            <div class="thumbnail" >
+                <img data-src="holder.js/300x300" {{bind-attr src=product.master.images.firstObject.imagepath}} alt="Not available">
+                <div class="caption" style="text-align:center;">
+                  <h3>{{product.master.price}}$</h3>
+                  {{product.master.name}}
+                  <p><a href="#" class="btn btn-primary" role="button">Buy Now</a> <a href="#" class="btn btn-default" role="button">Add to wishlist</a></p>
+                </div>
+            </div>
+          </div>  
+      {{/each}}
+  		
 	</div>
-	<div class="row">
-  		<div class="col-sm-4 col-md-3" >
-    		<div class="thumbnail" >
-      			<img data-src="holder.js/300x300" src="image/img_8.jpg" alt="Not available" hight="150" width="150">
-      			<div class="caption">
-        			<h3>Price: $$$</h3>
-        			<p><a href="#" class="btn btn-primary" role="button">Buy Now</a> <a href="#" class="btn btn-default" role="button">Add to wishlist</a></p>
-      			</div>
-    		</div>
-  		</div>	
-  		<div class="col-sm-4 col-md-3">
-    		<div class="thumbnail" style="width: 300px; margin: 0 auto" >
-      			<img data-src="holder.js/300x300" src="image/img_12.jpg" alt="Not available" hight="150" width="150">
-      			<div class="caption">
-        			<h3>Price: $$$</h3>
-        			<p><a href="#" class="btn btn-primary" role="button">Buy Now</a> <a href="#" class="btn btn-default" role="button">Add to wishlist</a></p>
-      			</div>
-    		</div>
-  		</div>
-  		<div class="col-sm-4 col-md-3">
-    		<div class="thumbnail" >
-      			<img data-src="holder.js/300x300" src="image/img_9.jpg" alt="Not available" hight="150" width="150">
-      			<div class="caption">
-        			<h3>Price: $$$</h3>
-        			<p><a href="#" class="btn btn-primary" role="button">Buy Now</a> <a href="#" class="btn btn-default" role="button">Add to wishlist</a></p>
-      			</div>
-    		</div>
-  		</div>
-  		<div class="col-sm-4 col-md-3">
-    		<div class="thumbnail" >
-      			<img data-src="holder.js/300x300" src="image/img_15.jpg" alt="Not available" hight="150" width="150">
-      			<div class="caption">
-        			<h3>Price: $$$</h3>
-        			<p><a href="#" class="btn btn-primary" role="button">Buy Now</a> <a href="#" class="btn btn-default" role="button">Add to wishlist</a></p>
-      			</div>
-    		</div>
-  		</div>
-
-	</div>
+	
 </div>
 <hr>
 <div class="row">
