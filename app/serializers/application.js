@@ -14,7 +14,7 @@ export default DS.RESTSerializer.extend(DS.EmbeddedRecordsMixin, {
   		delete payload.per_page;
   		delete payload.pages;
   		
-    	return this._super(store,type,payload,id,requestType)
+    	return this._super(store,type,payload,id,requestType);
   	},
 
 });
